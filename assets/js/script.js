@@ -46,11 +46,9 @@ function fetchWeather(city) {
 
     function renderCurrentWeather(data) {
         var dayJs = dayjs().format('dddd, MMMM D');
+        console.log(dayJs);
         var weatherData = document.createElement('p');
         weatherData.textContent = dayJs;
-        document.getElementById('display-weather').appendChild(weatherData);
-        var weatherData = document.createElement('p');
-        weatherData.textContent = 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
         document.getElementById('display-weather').appendChild(weatherData);
         var img = document.createElement('img');
         img.src = 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
@@ -75,7 +73,7 @@ function fetchWeather(city) {
             var forecastHumid = data.list[i].main.humidity;
 
             var weatherData = document.createElement('p');
-            weatherData.textContent = data.list[i].dt_txt;
+            weatherData.textContent = forecastTime;
             document.getElementById('display-forecast').appendChild(weatherData);
 
             console.log(forecastTime);
@@ -86,32 +84,27 @@ function fetchWeather(city) {
             console.log(forecastHumid + '%');
 
             var weatherData = document.createElement('p');
-            weatherData.textContent = data.list[i].dt_txt;
+            weatherData.textContent = forecastTime;
+            console.log(forecastTime);
             document.getElementById('display-forecast').appendChild(weatherData);
-            var weatherData = document.createElement('p');
-            weatherData.textContent = weatherIcon;
-            document.getElementById('display-forecast').appendChild(weatherData);
-            var img = document.createElement('img');
-            img.src = weatherIcon;
-            document.getElementById('display-forecast').appendChild(img);
-            var weatherData = document.createElement('p');
-            weatherData.textContent = data.list[i].main.temp + '°F';
-            document.getElementById('display-forecast').appendChild(weatherData);
-            var weatherData = document.createElement('p');
-            weatherData.textContent = data.list[i].wind.speed + ' MPH';
-            document.getElementById('display-forecast').appendChild(weatherData);
-            var weatherData = document.createElement('p');
-            weatherData.textContent = data.list[i].main.humidity + '%';
-            document.getElementById('display-forecast').appendChild(weatherData);
+            // var weatherData = document.createElement('p');
+            // weatherData.textContent = weatherIcon;
+            // document.getElementById('display-forecast').appendChild(weatherData);
+            // var img = document.createElement('img');
+            // img.src = weatherIcon;
+            // document.getElementById('display-forecast').appendChild(img);
+            // var weatherData = document.createElement('p');
+            // weatherData.textContent = data.list[i].main.temp + '°F';
+            // document.getElementById('display-forecast').appendChild(weatherData);
+            // var weatherData = document.createElement('p');
+            // weatherData.textContent = data.list[i].wind.speed + ' MPH';
+            // document.getElementById('display-forecast').appendChild(weatherData);
+            // var weatherData = document.createElement('p');
+            // weatherData.textContent = data.list[i].main.humidity + '%';
+            // document.getElementById('display-forecast').appendChild(weatherData);
         }
 
-
-        // var weatherData = document.createElement('p');
-        // document.getElementById('#display-weather').appendChild(weatherData);
-        // Get data, output to screen
-        // data.name (City name), data.wind.speed (windspeed), data.main.temp (temperature), data.main.humidity (humidity), day.js (date), data.weather[0].icon (weather icon) 
         for (let i = 3; data.list.length; i = i + 8) {
-            // Create element, make cards
         }
     }
 
