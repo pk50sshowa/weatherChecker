@@ -3,6 +3,7 @@ var inputEl = document.querySelector('input');
 var displayWeather = document.querySelector('#display-weather');
 // var historyBtn = document.querySelector('#historyBtn');
 
+var cityName = [];
 var apiKey = `8650ce0b104f1fb62c2dab553fc70e25`;
 
 function handleSearchSubmit() {
@@ -114,18 +115,21 @@ function renderForecastWeather(data) {
 }
 
 function renderSearchHistory(data) {
-    var cityName = data.city.name;
     console.log(cityName);
     var lat = data.city.coord.lat;
     var lon = data.city.coord.lon;
+    var city = data.city.name;
     console.log(lat, lon);
+    console.log(city);
 
     var weatherButton = document.createElement('button');
-    weatherButton.textContent = cityName;
+    weatherButton.textContent = city; 
     weatherButton.setAttribute("id", "#historyBtn");
     document.getElementById('search-history').appendChild(weatherButton);
 
-    localStorage.setItem("cityName", cityName);
+    cityName.push(city);
+    var string = JSON.stringify(cityName);
+    localStorage.setItem("cityName", string);
 }
 
 searchBtn.addEventListener('click', handleSearchSubmit);
