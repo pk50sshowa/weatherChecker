@@ -73,7 +73,8 @@ function fetchWeather(city) {
             var forecastHumid = data.list[i].main.humidity;
 
             var weatherData = document.createElement('p');
-            weatherData.textContent = forecastTime;
+            weatherData.textContent = data.list[i].dt_txt;
+            console.log(weatherData.textContent);
             document.getElementById('display-forecast').appendChild(weatherData);
 
             console.log(forecastTime);
@@ -83,10 +84,9 @@ function fetchWeather(city) {
             console.log(forecastWind + ' MPH');
             console.log(forecastHumid + '%');
 
-            var weatherData = document.createElement('p');
-            weatherData.textContent = forecastTime;
-            console.log(forecastTime);
-            document.getElementById('display-forecast').appendChild(weatherData);
+            // var weatherData = document.createElement('p');
+            // weatherData.textContent = data.list[i].dt_txt;
+            // document.getElementById('display-forecast').appendChild(weatherData);
             // var weatherData = document.createElement('p');
             // weatherData.textContent = weatherIcon;
             // document.getElementById('display-forecast').appendChild(weatherData);
@@ -104,7 +104,13 @@ function fetchWeather(city) {
             // document.getElementById('display-forecast').appendChild(weatherData);
         }
 
+
+        // var weatherData = document.createElement('p');
+        // document.getElementById('#display-weather').appendChild(weatherData);
+        // Get data, output to screen
+        // data.name (City name), data.wind.speed (windspeed), data.main.temp (temperature), data.main.humidity (humidity), day.js (date), data.weather[0].icon (weather icon) 
         for (let i = 3; data.list.length; i = i + 8) {
+            // Create element, make cards
         }
     }
 

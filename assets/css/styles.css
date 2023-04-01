@@ -9,3 +9,13 @@ h1, footer {
     text-align: center;
 }
 
+header {
+    background-image: linear-gradient(to right, blue, grey);
+}
+
+#display-weather, #display-forecast, #search-area, #search-history {
+    border-style: solid;
+    border-width: thin;
+    padding: 10px;
+    margin: 2px;
+}
