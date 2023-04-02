@@ -18,15 +18,11 @@ header {
     border-width: thin;
     padding: 10px;
     margin: 2px;
-    text-align: center;
+    flex: auto;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-#display-forecast {
-
 }

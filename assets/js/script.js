@@ -88,6 +88,10 @@ function renderForecastWeather(data) {
         var forecastTemp = data.list[i].main.temp;
         var forecastWind = data.list[i].wind.speed;
         var forecastHumid = data.list[i].main.humidity;
+        var dayJs = dayjs(forecastTime).format('MMMM D');
+        console.log(dayJs);
+        var weatherData = document.createElement('p');
+        weatherData.textContent = dayJs;
 
         console.log(forecastTime);
         var weatherIcon = 'http://openweathermap.org/img/wn/' + weatherIcon + '@2x.png';
@@ -99,7 +103,7 @@ function renderForecastWeather(data) {
         var weatherList = document.createElement('ul');
         document.getElementById('display-forecast').appendChild(weatherList);
         var weatherData = document.createElement('li');
-        weatherData.textContent = data.list[i].dt_txt;
+        weatherData.textContent = dayJs;
         document.getElementById('display-forecast').appendChild(weatherData);
         var img = document.createElement('img');
         img.src = weatherIcon;
@@ -118,14 +122,11 @@ function renderForecastWeather(data) {
 
 function renderSearchHistory(data) {
     console.log(cityName);
-    var lat = data.city.coord.lat;
-    var lon = data.city.coord.lon;
     var city = data.city.name;
-    console.log(lat, lon);
     console.log(city);
 
     var weatherButton = document.createElement('button');
-    weatherButton.textContent = city; 
+    weatherButton.textContent = city;
     weatherButton.setAttribute("id", "#historyBtn");
     weatherButton.addEventListener('click', handleHistorySubmit);
     document.getElementById('search-history').appendChild(weatherButton);
@@ -133,7 +134,7 @@ function renderSearchHistory(data) {
     cityName.push(city);
     var string = JSON.stringify(cityName);
     localStorage.setItem("cityName", string);
-    
+
 }
 
 searchBtn.addEventListener('click', handleSearchSubmit);
