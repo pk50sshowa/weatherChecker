@@ -44,7 +44,6 @@ function fetchWeather(city) {
             console.log(mainTemp);
             console.log(mainHumid);
             console.log(weatherIcon);
-            console.log(dayJs);
             var weatherIcon = 'http://openweathermap.org/img/wn/' + weatherIcon + '@2x.png';
             console.log(weatherIcon);
             fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
@@ -60,23 +59,26 @@ function fetchWeather(city) {
 function renderCurrentWeather(data) {
     document.getElementById('display-weather').innerHTML = "";
 
+    var weatherList = document.createElement('ul');
+    document.getElementById('display-weather').appendChild(weatherList);
     var dayJs = dayjs().format('MMMM D');
     console.log(dayJs);
-    var weatherData = document.createElement('p');
-    weatherData.textContent = dayJs;
-    document.getElementById('display-weather').appendChild(weatherData);
+    var weatherData1 = document.createElement('li');
+    weatherData1.textContent = dayJs;
+    // document.getElementById('display-weather').appendChild(weatherData);
     var img = document.createElement('img');
     img.src = 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
-    document.getElementById('display-weather').appendChild(img);
-    var weatherData = document.createElement('p');
-    weatherData.textContent = data.main.temp + '°F';
-    document.getElementById('display-weather').appendChild(weatherData);
-    var weatherData = document.createElement('p');
-    weatherData.textContent = data.wind.speed + ' MPH';
-    document.getElementById('display-weather').appendChild(weatherData);
-    var weatherData = document.createElement('p');
-    weatherData.textContent = data.main.humidity + '%';
-    document.getElementById('display-weather').appendChild(weatherData);
+    // document.getElementById('display-weather').appendChild(img);
+    var weatherData2 = document.createElement('li');
+    weatherData2.textContent = data.main.temp + '°F';
+    // document.getElementById('display-weather').appendChild(weatherData);
+    var weatherData3 = document.createElement('li');
+    weatherData3.textContent = data.wind.speed + ' MPH';
+    // document.getElementById('display-weather').appendChild(weatherData);
+    var weatherData4 = document.createElement('li');
+    weatherData4.textContent = data.main.humidity + '%';
+    // document.getElementById('display-weather').appendChild(weatherData);
+    weatherList.append(weatherData1, img, weatherData2, weatherData3, weatherData4);
 }
 
 function renderForecastWeather(data) {
@@ -102,21 +104,17 @@ function renderForecastWeather(data) {
 
         var weatherList = document.createElement('ul');
         document.getElementById('display-forecast').appendChild(weatherList);
-        var weatherData = document.createElement('li');
-        weatherData.textContent = dayJs;
-        document.getElementById('display-forecast').appendChild(weatherData);
+        var weatherData1 = document.createElement('li');
+        weatherData1.textContent = dayJs;
         var img = document.createElement('img');
         img.src = weatherIcon;
-        document.getElementById('display-forecast').appendChild(img);
-        var weatherData = document.createElement('li');
-        weatherData.textContent = data.list[i].main.temp + '°F';
-        document.getElementById('display-forecast').appendChild(weatherData);
-        var weatherData = document.createElement('li');
-        weatherData.textContent = data.list[i].wind.speed + ' MPH';
-        document.getElementById('display-forecast').appendChild(weatherData);
-        var weatherData = document.createElement('li');
-        weatherData.textContent = data.list[i].main.humidity + '%';
-        document.getElementById('display-forecast').appendChild(weatherData);
+        var weatherData2 = document.createElement('li');
+        weatherData2.textContent = data.list[i].main.temp + '°F';
+        var weatherData3 = document.createElement('li');
+        weatherData3.textContent = data.list[i].wind.speed + ' MPH';
+        var weatherData4 = document.createElement('li');
+        weatherData4.textContent = data.list[i].main.humidity + '%';
+        weatherList.append(weatherData1, img, weatherData2, weatherData3, weatherData4);
     }
 }
 
