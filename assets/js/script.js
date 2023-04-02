@@ -1,7 +1,7 @@
 var searchBtn = document.querySelector('#searchBtn');
+var historyBtn = document.querySelector('#historyBtn');
 var inputEl = document.querySelector('input');
 var displayWeather = document.querySelector('#display-weather');
-// var historyBtn = document.querySelector('#historyBtn');
 
 var cityName = [];
 var apiKey = `8650ce0b104f1fb62c2dab553fc70e25`;
@@ -15,10 +15,12 @@ function handleSearchSubmit() {
     inputEl.value = '';
 }
 
-// function handleHistorySubmit(city) {
-//     var city = cityName;
-//     console.log(city);
-// }
+function handleHistorySubmit(city) {
+    console.log(cityName);
+    console.log(e.target);
+    var city = cityName;
+    console.log(city);
+}
 
 function fetchWeather(city) {
 
@@ -111,7 +113,6 @@ function renderForecastWeather(data) {
         weatherData.textContent = data.list[i].main.humidity + '%';
         document.getElementById('display-forecast').appendChild(weatherData);
     }
-
 }
 
 function renderSearchHistory(data) {
@@ -130,7 +131,8 @@ function renderSearchHistory(data) {
     cityName.push(city);
     var string = JSON.stringify(cityName);
     localStorage.setItem("cityName", string);
+    
 }
 
 searchBtn.addEventListener('click', handleSearchSubmit);
-// historyBtn.addEventListener('click', handleHistorySubmit);
+historyBtn.addEventListener('click', handleHistorySubmit);
