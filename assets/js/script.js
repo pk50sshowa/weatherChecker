@@ -4,7 +4,7 @@ var inputEl = document.querySelector('input');
 var displayWeather = document.querySelector('#display-weather');
 
 var cityName = [];
-var apiKey = `8650ce0b104f1fb62c2dab553fc70e25`;
+var apiKey = config.SG_API_KEY;
 
 function handleSearchSubmit() {
     if (!inputEl.value) {
