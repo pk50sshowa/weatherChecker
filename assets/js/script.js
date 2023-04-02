@@ -15,11 +15,12 @@ function handleSearchSubmit() {
     inputEl.value = '';
 }
 
-function handleHistorySubmit(city) {
+function handleHistorySubmit(e) {
     console.log(cityName);
     console.log(e.target);
-    var city = cityName;
+    var city = e.target.innerHTML;
     console.log(city);
+    fetchWeather(city);
 }
 
 function fetchWeather(city) {
@@ -126,6 +127,7 @@ function renderSearchHistory(data) {
     var weatherButton = document.createElement('button');
     weatherButton.textContent = city; 
     weatherButton.setAttribute("id", "#historyBtn");
+    weatherButton.addEventListener('click', handleHistorySubmit);
     document.getElementById('search-history').appendChild(weatherButton);
 
     cityName.push(city);
@@ -135,4 +137,3 @@ function renderSearchHistory(data) {
 }
 
 searchBtn.addEventListener('click', handleSearchSubmit);
-historyBtn.addEventListener('click', handleHistorySubmit);
