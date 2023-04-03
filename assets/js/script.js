@@ -1,3 +1,4 @@
+//Global variables for the application
 var searchBtn = document.querySelector('#searchBtn');
 var historyBtn = document.querySelector('#historyBtn');
 var inputEl = document.querySelector('input');
@@ -6,6 +7,7 @@ var displayWeather = document.querySelector('#display-weather');
 var cityName = [];
 var apiKey = config.SG_API_KEY;
 
+// Basic search function, takes input from the user and sends the input city name to the weather API to fetch weather information
 function handleSearchSubmit() {
     if (!inputEl.value) {
         return;
@@ -15,6 +17,7 @@ function handleSearchSubmit() {
     inputEl.value = '';
 }
 
+// Search function that works with search history buttons and their associated cities
 function handleHistorySubmit(e) {
     console.log(cityName);
     console.log(e.target);
@@ -23,8 +26,8 @@ function handleHistorySubmit(e) {
     fetchWeather(city);
 }
 
+// Function to get weather information from the weather API, then calls functions to render current weather and get/render forecast weather, as well as the function to render the search history
 function fetchWeather(city) {
-
     fetch(`https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`)
         .then((response) => response.json())
         .then((data) => {
@@ -56,6 +59,7 @@ function fetchWeather(city) {
         });
 }
 
+// Function that renders the current weather for the input city, uses the DOM API to dynamically create elements on the page
 function renderCurrentWeather(data) {
     document.getElementById('display-weather').innerHTML = "";
 
@@ -81,9 +85,9 @@ function renderCurrentWeather(data) {
     weatherList.append(weatherData1, img, weatherData2, weatherData3, weatherData4);
 }
 
+// Function that renders forecast weather for five days in the future thanks to a for loop
 function renderForecastWeather(data) {
     document.getElementById('display-forecast').innerHTML = "";
-
     for (let i = 0; i < 40; i = i + 8) {
         var forecastTime = data.list[i].dt_txt;
         var weatherIcon = data.list[i].weather[0].icon;
@@ -118,6 +122,7 @@ function renderForecastWeather(data) {
     }
 }
 
+// Function to render the search history
 function renderSearchHistory(data) {
     console.log(cityName);
     var city = data.city.name;
@@ -135,4 +140,5 @@ function renderSearchHistory(data) {
 
 }
 
+// Global event listener for the function's base search button
 searchBtn.addEventListener('click', handleSearchSubmit);

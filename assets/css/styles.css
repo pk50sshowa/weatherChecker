@@ -1,3 +1,4 @@
+/* Universal CSS styling for elements within the page */
 * {
     box-sizing: border-box;
     padding: 0;
@@ -42,6 +43,7 @@ footer {
     color: white
 }
 
+/* Overall styling for each main display window of the application */
 #display-weather, #display-forecast, #search-area, #search-history {
     border-style: solid;
     border-width: thin;
