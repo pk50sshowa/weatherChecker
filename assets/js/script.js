@@ -1,4 +1,4 @@
-//Global variables for the application
+// Global variables for the application
 var searchBtn = document.querySelector('#searchBtn');
 var historyBtn = document.querySelector('#historyBtn');
 var inputEl = document.querySelector('input');
@@ -69,19 +69,14 @@ function renderCurrentWeather(data) {
     console.log(dayJs);
     var weatherData1 = document.createElement('li');
     weatherData1.textContent = dayJs;
-    // document.getElementById('display-weather').appendChild(weatherData);
     var img = document.createElement('img');
     img.src = 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
-    // document.getElementById('display-weather').appendChild(img);
     var weatherData2 = document.createElement('li');
     weatherData2.textContent = data.main.temp + '°F';
-    // document.getElementById('display-weather').appendChild(weatherData);
     var weatherData3 = document.createElement('li');
     weatherData3.textContent = data.wind.speed + ' MPH';
-    // document.getElementById('display-weather').appendChild(weatherData);
     var weatherData4 = document.createElement('li');
     weatherData4.textContent = data.main.humidity + '%';
-    // document.getElementById('display-weather').appendChild(weatherData);
     weatherList.append(weatherData1, img, weatherData2, weatherData3, weatherData4);
 }
 
